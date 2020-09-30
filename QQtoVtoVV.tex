@@ -1,0 +1,61 @@
+
+
+\documentclass{article}
+
+\input{shared/header.tex} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{empty}
+
+
+%%%%%%%% THE NAME OF THE fmffile HAS TO BE ``Feynman<filename>'' TO USE compile.py %%%%%%%%%%%%%%%
+\begin{fmffile}{FeynmanQQtoVtoVV}
+\parbox{300mm}{
+
+\begin{fmfgraph*}(180,90) %\fmfpen{thick}
+
+  \fmfset{arrow_len}{cm}\fmfset{arrow_ang}{0}
+
+  %%%%%%%%%%%% Specifying number of inputs/outputs
+  \fmfleftn{i}{2}
+  \fmfrightn{o}{3}
+  \fmflabel{}{i1}
+  \fmflabel{}{i2}
+  
+  \fmfforce{0.45w, 0.25h}{v1}
+  \fmfforce{0.45w, 0.75h}{v2}
+  \fmfforce{0.75w, 0.25h}{v3}
+  \fmfforce{w, 0.0h}{o1}
+  \fmfforce{w, 0.5h}{o2}
+  \fmfforce{w, h}{o3}
+
+  %%%%%%%%%%%% Incoming quarks
+  \fmf{fermion, lab=q, label.side=right}{v1,i1}
+  \fmf{fermion, lab=q, label.side=left}{v2,i2}
+
+  %%%%%%%%%%%% Produced boson
+  \fmf{fermion}{v1,v2}
+
+  \fmf{photon, label=\PV}{v1,v3}
+  \fmf{photon}{v2,o3}
+  \fmf{photon}{v3,o1}
+  \fmf{photon}{v3,o2}
+  \fmflabel{\PV}{o1}
+  \fmflabel{\PV}{o2}
+  \fmflabel{\PV}{o3}
+
+  %% Vertex circles
+  \fmfv{decor.shape=circle,decor.filled=100, decor.size=.03w}{v1}
+  \fmfv{decor.shape=circle,decor.filled=100, decor.size=.03w}{v2}
+  \fmfv{decor.shape=circle,decor.filled=100, decor.size=.08w, foreground=blue}{v3}
+
+  %%%%%%%%%%%% Additional lines on incoming protons and blob
+  %\input{shared/protons.tex}
+
+\end{fmfgraph*}
+
+}
+\end{fmffile}
+
+\end{document}

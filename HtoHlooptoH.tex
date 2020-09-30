@@ -1,0 +1,43 @@
+
+%%%%%%%%%%%%%%%%%%%%%% Feynman diagram for VtoVV
+
+\documentclass{article}
+
+\input{shared/header.tex} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{empty}
+
+
+%%%%%%%% THE NAME OF THE fmffile HAS TO BE ``Feynman<filename>'' TO USE compile.py %%%%%%%%%%%%%%%
+\begin{fmffile}{FeynmanHtoHlooptoH}
+\parbox{300mm}{
+
+\begin{fmfgraph*}(120,90) %\fmfpen{thick}
+
+  \fmfset{arrow_len}{cm}\fmfset{arrow_ang}{0}
+
+  %%incoming and outgoing
+  \fmfleft{i}
+  \fmfright{o}
+
+  %%vertex
+  \fmfdot{v}
+
+  \fmf{dashes, label=$\Phi$}{i,v}
+  \fmf{dashes, label=$\Phi$}{v,o}
+
+  %%loop
+  \fmf{dashes, right, label=$\Phi$}{v,v}
+
+
+  %%%%%%%%%%%% Additional lines on incoming protons and blob
+  %\input{shared/protons.tex}
+
+\end{fmfgraph*}
+
+}
+\end{fmffile}
+
+\end{document}
