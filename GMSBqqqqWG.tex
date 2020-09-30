@@ -1,0 +1,93 @@
+
+%%%%%%%%%%%%%%%%%%%%%% Feynman diagram for GMSBqqqqWG
+
+\documentclass{article}
+
+\input{shared/header.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{empty}
+
+
+%%%%%%%% THE NAME OF THE fmffile HAS TO BE ``Feynman<filename>'' TO USE compile.py %%%%%%%%%%%%%%%
+\begin{fmffile}{FeynmanGMSBqqqqWG}
+\parbox{300mm}{
+
+\begin{fmfgraph*}(180,90) %\fmfpen{thick}
+
+  \fmfset{arrow_len}{cm}\fmfset{arrow_ang}{0}
+
+  %%%%%%%%%%%% Specifying number of inputs/outputs
+
+  \fmfleftn{i}{2}
+
+  \fmfforce{0.w,0.95h}{i1}
+  \fmfforce{0.w,0.05h}{i2}
+
+
+  \fmfbottom{o10,o11,o11a,o1,o2,o3}
+  \fmfright{o4,o5}
+  \fmftop{o12,o13,o13a,o8,o7,o6}
+  %%%%%%%%%%%% Incoming protons (one line)
+  \fmf{fermion,  tension=2., lab=p, label.side=right}{v1,i2}
+  \fmf{fermion,  tension=2., lab=p, label.side=left}{v1,i1}
+
+    \fmfforce{0.43w,0.75h}{v2}
+    \fmfforce{0.62w,0.75h}{v3}
+    \fmfforce{0.82w,0.75h}{v4}
+    \fmfforce{w,0.75h}{o5}
+
+    \fmfforce{0.43w,0.25h}{v5}
+    \fmfforce{0.62w,0.25h}{v6}
+    \fmfforce{0.82w,0.25h}{v7}
+    \fmfforce{w,0.25h}{o4}
+
+
+
+  %%%%%%%%%%%% Produced SUSY particles
+  \fmf{gluon, label=\sGlu, label.side=left, label.dist=+8}{v1,v2}
+  \fmf{gluon, label=\sGlu, label.side=right, label.dist=+12}{v1,v5}
+
+  \fmf{fermion}{v1,v2}
+  \fmf{fermion}{v1,v5}
+  %%%%%%%%%%%%% Decays and vertex circles
+
+  %%% Top vertex
+  \fmf{dashes, label=\sQ,label.dist=+3, label.side=left}{v5,v6}
+  \fmf{dots,label=\chipm,label.dist=-14}{v6,v7}
+      \fmflabel{\anti{q}}{o1}
+      \fmflabel{$q^\prime$}{o2}
+           \fmflabel{\sGra}{o4}
+           \fmflabel{\PW}{o3}
+           \fmf{fermion}{o1,v5}
+           \fmf{fermion}{o2,v6}
+           \fmf{dots}{o4,v7}
+           \fmf{photon}{o3,v7}
+
+  %%% Bottom vertex
+  \fmf{dashes, label=\sQb, label.dist=+3, label.side=right}{v2,v3}
+  \fmf{dots,label=\chiz,label.dist=3}{v3,v4}
+   \fmflabel{$\gamma$}{o6}
+   \fmflabel{\sGra}{o5}
+   \fmflabel{\anti{q}}{o7}
+   \fmflabel{q}{o8}
+           \fmf{fermion}{o8,v2}
+           \fmf{fermion}{o7,v3}
+           \fmf{dots}{o5,v4}
+           \fmf{photon}{o6,v4}
+
+  %% Vertex circles
+  \fmfdot{v2,v3,v4,v5,v6,v7}
+
+  %%%%%%%%%%%% Additional lines on incoming protons and blob
+  \input{shared/protons.tex}
+
+
+\end{fmfgraph*}
+
+}
+\end{fmffile}
+
+\end{document}
